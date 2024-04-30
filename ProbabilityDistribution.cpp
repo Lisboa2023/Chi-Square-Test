@@ -36,16 +36,11 @@ void ProbabilityDistribution::setProbabilityDensityFunction(double t, int v){
     PDF = (a*b)/(c*d);
 }
 
-
-float ProbabilityDistribution::getDistribution() const{
-    return distribution;
-}
-
 //Função Distribuição Acumulada da Distribuição Qui-Quadrada(integral da Função Densidade de Probabilidade)
 void ProbabilityDistribution::setCumulativeDistributionFunction(float a, float b, int c){   
 
     const int n = 1000;                                      
-    float h = distribution/n;
+    float h = (b-a)/n;
 
     setProbabilityDensityFunction(a,c);          
     float somatoria = PDF;
@@ -59,6 +54,10 @@ void ProbabilityDistribution::setCumulativeDistributionFunction(float a, float b
     }
 
     CDF = (h/2)*somatoria;
+}
+
+float ProbabilityDistribution::getDistribution() const{
+    return distribution;
 }
 
 float ProbabilityDistribution::getCumulativeDistributionFunction() const{
