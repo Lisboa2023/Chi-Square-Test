@@ -7,7 +7,6 @@ void ChiSquareTest(int, int, float *);
 
 int main()
 {   
-    int x;
     int size, df = 5;
 
     cout << "Insira a quantidade de valores: ";
