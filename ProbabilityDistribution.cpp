@@ -29,14 +29,14 @@ void ProbabilityDistribution::setCumulativeDistributionFunction(float a, float b
     const int n = 1000;                                      
     float h = distribution/n;
 
-    setProbabilityDensityFunction(a,c);          
+    setProbabilityDensityFunction(a);          
     float somatoria = PDF;
 
-    setProbabilityDensityFunction(b,c);
-    somatoria = PDF;
+    setProbabilityDensityFunction(b);
+    somatoria += PDF;
 
     for(int i = 1; i < n; i++){
-        setProbabilityDensityFunction(i*h,c);
+        setProbabilityDensityFunction(i*h);
         somatoria += 2 * PDF;
     }
 

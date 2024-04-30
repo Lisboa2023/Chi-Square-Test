@@ -32,4 +32,20 @@ void ChiSquareTest(int size, int df, float *v){
     float d = X2.getDistribution();
     X2.setCumulativeDistributionFunction(0, d, df);
     X2.print();
+
+    float test = X2.getCumulativeDistributionFunction();
+    const float confidenceLevel = 0.99;
+
+    cout << endl
+         << "Nivel de confianca: " << confidenceLevel << endl << endl;
+
+    if(test > confidenceLevel){
+        cout << endl 
+             << "Erro Detectado" << endl;
+    }
+    else{
+        cout << endl 
+             << "Nao ha erro no conjunto de medicoes" << endl << endl;
+    }
 }
+

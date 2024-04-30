@@ -17,12 +17,12 @@ void ChiSquareDistribution::setDistribution(int size){
 }
 
 //Função Densidade de Probabilidade da Distribuição Qui-Quadrada
-void ChiSquareDistribution::setProbabilityDensityFunction(double t, int v){                   
+void ChiSquareDistribution::setProbabilityDensityFunction(double t){                   
     //t, variável da função; v, graus de liberdade da função
-    double a = pow(t,(v-2)/2);
+    double a = pow(t,(DF-2)/2);
     double b = exp(-t/2);
-    double c = pow(2,v/2);
-    double d = tgamma(v/2);
+    double c = pow(2,DF/2);
+    double d = tgamma(DF/2);
 
     PDF = (a*b)/(c*d);
 }
