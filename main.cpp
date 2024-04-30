@@ -1,5 +1,5 @@
 #include<iostream>
-#include"ChiSquareDistribution.h"
+#include"ProbabilityDistribution.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ int main()
 }
 
 void ChiSquareTest(int size, int df, float *v){
-    ChiSquareDistribution X2(size,df);
+    ProbabilityDistribution X2(size);
     
     X2.setValues(v);    
     X2.setDistribution(size);

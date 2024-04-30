@@ -9,7 +9,7 @@ class ProbabilityDistribution{
         //Funções SET
         void setValues(float *);
         virtual void setDistribution(int);
-        virtual void setProbabilityDensityFunction(double);
+        virtual void setProbabilityDensityFunction(double,int);
         virtual void setCumulativeDistributionFunction(float, float, int);
         
         //Funções GET
