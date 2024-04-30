@@ -45,7 +45,7 @@ float ProbabilityDistribution::getDistribution() const{
 void ProbabilityDistribution::setCumulativeDistributionFunction(float a, float b, int c){   
 
     const int n = 1000;                                      
-    float h = distribution/n;
+    float h = (b-a)/n;
 
     setProbabilityDensityFunction(a,c);          
     float somatoria = PDF;

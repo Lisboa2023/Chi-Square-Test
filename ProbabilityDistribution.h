@@ -17,7 +17,7 @@ class ProbabilityDistribution{
         float getCumulativeDistributionFunction() const;
 
         virtual void print() const;
-    protected:
+    private:
         float *value;
         float distribution;
         float PDF;
