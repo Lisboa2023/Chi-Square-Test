@@ -15,13 +15,18 @@ ProbabilityDistribution::~ProbabilityDistribution(){
 }
 
 //Recebe valores para a Distribuição Qui-Quadrada
-void ProbabilityDistribution::setValues(float *ptr){
-    value = ptr;          
+void ProbabilityDistribution::setValues(float *ptr, float *measurement, float *mEstimated, double *covarianceMatrix[], int size){
+    for (int i = 0; i < size; i++)
+    {
+        *(ptr+i) = (*(measurement+i) - *(mEstimated+i))/sqrt(covarianceMatrix[i][i]);
+    }
+
+    value = ptr;
 }
 
 void ProbabilityDistribution::setDistribution(int size){          
     for(int i = 0; i < size; i++){
-        distribution += pow(*(value+i), 2);              
+        distribution += pow(*(value+i), 2);
     }
 }
 
