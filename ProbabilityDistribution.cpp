@@ -15,13 +15,18 @@ ProbabilityDistribution::~ProbabilityDistribution(){
 }
 
 //Recebe valores para a Distribuição Qui-Quadrada
-void ProbabilityDistribution::setValues(float *ptr){
-    value = ptr;          
+void ProbabilityDistribution::setValues(float *ptr, float *measurement, float *mEstimated, double *covarianceMatrix[], int size){
+    for (int i = 0; i < size; i++)
+    {
+        *(ptr+i) = (*(measurement+i) - *(mEstimated+i))/sqrt(covarianceMatrix[i][i]);
+    }
+
+    value = ptr;
 }
 
 void ProbabilityDistribution::setDistribution(int size){          
     for(int i = 0; i < size; i++){
-        distribution += pow(*(value+i), 2);              
+        distribution += pow(*(value+i), 2);
     }
 }
 
@@ -34,11 +39,6 @@ void ProbabilityDistribution::setProbabilityDensityFunction(double t, int v){
     double d = tgamma(v/2);
 
     PDF = (a*b)/(c*d);
-}
-
-
-float ProbabilityDistribution::getDistribution() const{
-    return distribution;
 }
 
 //Função Distribuição Acumulada da Distribuição Qui-Quadrada(integral da Função Densidade de Probabilidade)
@@ -59,6 +59,10 @@ void ProbabilityDistribution::setCumulativeDistributionFunction(float a, float b
     }
 
     CDF = (h/2)*somatoria;
+}
+
+float ProbabilityDistribution::getDistribution() const{
+    return distribution;
 }
 
 float ProbabilityDistribution::getCumulativeDistributionFunction() const{

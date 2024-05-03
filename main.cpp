@@ -7,27 +7,20 @@ void ChiSquareTest(int, int, float *);
 
 int main()
 {   
-    int size, df = 5;
-
-    cout << "Insira a quantidade de valores: ";
-    cin >> size;
+    const int size = 5, df = 5;
 
     float *v = new float[size];
 
-    for (int i = 0; i < size; i++){
-        cout << "Insira o valor de x[" << i+1 << "]: ";
-        cin >> *(v+i); 
-    }
+    // ChiSquareTest(size, df, v);
 
-    ChiSquareTest(size, df, v);
-
+    delete [] v;
     return 0;
 }
 
-void ChiSquareTest(int size, int df, float *v){
+void ChiSquareTest(int size, int df, float *values, float *measurement, float* mEstimated, double *covarianceMatrix[]){
     ProbabilityDistribution X2(size);
     
-    X2.setValues(v);    
+    X2.setValues(values, measurement, mEstimated, covarianceMatrix,size);    
     X2.setDistribution(size);
     float d = X2.getDistribution();
     X2.setCumulativeDistributionFunction(0, d, df);
