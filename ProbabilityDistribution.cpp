@@ -18,7 +18,7 @@ ProbabilityDistribution::~ProbabilityDistribution(){
 void ProbabilityDistribution::setValues(float *ptr, float *measurement, float *mEstimated, double *covarianceMatrix[], int size){
     for (int i = 0; i < size; i++)
     {
-        *(ptr+i) = (*(measurement+i) - *(mEstimated+i))/sqrt(covarianceMatrix[i][i]);
+        ptr[i] = measurement[i] - mEstimated[i]/sqrt(covarianceMatrix[i][i]);
     }
 
     value = ptr;
@@ -26,7 +26,7 @@ void ProbabilityDistribution::setValues(float *ptr, float *measurement, float *m
 
 void ProbabilityDistribution::setDistribution(int size){          
     for(int i = 0; i < size; i++){
-        distribution += pow(*(value+i), 2);
+        distribution += pow(value[i], 2);
     }
 }
 
