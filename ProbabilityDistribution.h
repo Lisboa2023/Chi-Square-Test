@@ -3,14 +3,16 @@
 
 class ProbabilityDistribution{
     public:
-        ProbabilityDistribution(int);
+        ProbabilityDistribution(int, int );
         ~ProbabilityDistribution();
         
         //Funções SET
-        void setValues(float *, float *, float *, double **, int);
-        virtual void setDistribution(int);
-        virtual void setProbabilityDensityFunction(double,int);
-        virtual void setCumulativeDistributionFunction(float, float, int);
+        void setNumberOfMeasurements(int);
+        void setDegreesOfFreedom(int);
+        void setValues(float *, float *, double *);
+        virtual void setDistribution();
+        virtual void setProbabilityDensityFunction(double);
+        virtual void setCumulativeDistributionFunction(float, float);
         
         //Funções GET
         float getDistribution() const;
@@ -18,6 +20,8 @@ class ProbabilityDistribution{
 
         virtual void print() const;
     private:
+        int size;
+        int df;
         float *value;
         float distribution;
         float PDF;
