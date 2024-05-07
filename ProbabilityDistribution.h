@@ -3,23 +3,17 @@
 
 class ProbabilityDistribution{
     public:
-        ProbabilityDistribution(int, int );
+        ProbabilityDistribution(const int, const int);
         ~ProbabilityDistribution();
         
         //Funções SET
-<<<<<<< HEAD
-        void setValues(float *);
-        virtual void setDistribution(int);
-        virtual void setProbabilityDensityFunction(double,int);
-        virtual void setCumulativeDistributionFunction(float, float, int);
-=======
-        void setNumberOfMeasurements(int);
-        void setDegreesOfFreedom(int);
-        void setValues(float *, float *, double *);
+        void setNumberOfMeasurements(const int);
+        void setDegreesOfFreedom(const int);
+        void setValues(const float *, const float *, const double *);
         virtual void setDistribution();
-        virtual void setProbabilityDensityFunction(double);
-        virtual void setCumulativeDistributionFunction(float, float);
->>>>>>> patch_1
+        virtual void setProbabilityDensityFunction(const double);
+        virtual void setCumulativeDistributionFunction(const float, const float);
+        void ChiSquareTest(const int, const int, const float *, const float *, const double *);
         
         //Funções GET
         float getDistribution() const;
@@ -27,11 +21,8 @@ class ProbabilityDistribution{
 
         virtual void print() const;
     private:
-<<<<<<< HEAD
-=======
         int size;
         int df;
->>>>>>> patch_1
         float *value;
         float distribution;
         float PDF;
