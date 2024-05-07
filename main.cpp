@@ -1,5 +1,5 @@
 #include<iostream>
-#include"ProbabilityDistribution.h"
+#include"ChiSquareDistribution.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ int main()
 
     const double *cmPtr = covarianceMatrix[0];                                       
 
-    ProbabilityDistribution X2(size,df);
+    ChiSquareDistribution X2(size,df);
     X2.ChiSquareTest(measurement, estimatedMeasurements, cmPtr);
 
     return 0;

@@ -1,45 +1,45 @@
 #include<iostream>
 #include<cmath>
-#include"ProbabilityDistribution.h"
+#include"ChiSquareDistribution.h"
 
 using std::cout;
 using std::endl;
 
-ProbabilityDistribution::ProbabilityDistribution(const int SIZE, const int DF){
+ChiSquareDistribution::ChiSquareDistribution(const int SIZE, const int DF){
     setNumberOfMeasurements(SIZE);
     setDegreesOfFreedom(DF);
     value = new float [SIZE];
     distribution = PDF = CDF = 0;
 }
 
-ProbabilityDistribution::~ProbabilityDistribution(){
+ChiSquareDistribution::~ChiSquareDistribution(){
     delete [] value;
 }
 
-void ProbabilityDistribution::setNumberOfMeasurements(const int SIZE){
+void ChiSquareDistribution::setNumberOfMeasurements(const int SIZE){
     size = SIZE;
 }
 
-void ProbabilityDistribution::setDegreesOfFreedom(const int DF){
+void ChiSquareDistribution::setDegreesOfFreedom(const int DF){
     df = DF;
 }
 
 //Recebe valores para a Distribuição Qui-Quadrada
-void ProbabilityDistribution::setValues(const float *measurement,const float *mEstimated,const double *covarianceMatrix){
+void ChiSquareDistribution::setValues(const float *measurement,const float *mEstimated,const double *covarianceMatrix){
     for (int i = 0; i < size; i++)
     {
         value[i] = measurement[i] - mEstimated[i]/sqrt(covarianceMatrix[i*size + i]);
     }
 }
 
-void ProbabilityDistribution::setDistribution(){          
+void ChiSquareDistribution::setDistribution(){          
     for(int i = 0; i < size; i++){
         distribution += pow(value[i], 2);
     }
 }
 
 //Função Densidade de Probabilidade da Distribuição Qui-Quadrada
-void ProbabilityDistribution::setProbabilityDensityFunction(const double t){                   
+void ChiSquareDistribution::setProbabilityDensityFunction(const double t){                   
     //t, variável da função; v, graus de liberdade da função
     double a = pow(t,(df-2)/2);
     double b = exp(-t/2);
@@ -50,7 +50,7 @@ void ProbabilityDistribution::setProbabilityDensityFunction(const double t){
 }
 
 //Função Distribuição Acumulada da Distribuição Qui-Quadrada(integral da Função Densidade de Probabilidade)
-void ProbabilityDistribution::setCumulativeDistributionFunction(const float a,const float b){   
+void ChiSquareDistribution::setCumulativeDistributionFunction(const float a,const float b){   
 
     const int n = 1000;                                      
     float h = (b-a)/n;
@@ -69,7 +69,7 @@ void ProbabilityDistribution::setCumulativeDistributionFunction(const float a,co
     CDF = (h/2)*somatoria;
 }
 
-void ProbabilityDistribution::ChiSquareTest(const float *measurement, const float* mEstimated, const double *covarianceMatrix){
+void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* mEstimated, const double *covarianceMatrix){
     
     setValues(measurement, mEstimated, covarianceMatrix);    
     setDistribution();
@@ -93,15 +93,15 @@ void ProbabilityDistribution::ChiSquareTest(const float *measurement, const floa
     }
 }
 
-float ProbabilityDistribution::getDistribution() const{
+float ChiSquareDistribution::getDistribution() const{
     return distribution;
 }
 
-float ProbabilityDistribution::getCumulativeDistributionFunction() const{
+float ChiSquareDistribution::getCumulativeDistributionFunction() const{
     return CDF;
 }
 
-void ProbabilityDistribution::print() const{
+void ChiSquareDistribution::print() const{
     cout << "xt = " << distribution << endl
          << "P = " << CDF << endl;   
 }

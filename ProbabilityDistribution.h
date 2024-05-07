@@ -1,10 +1,10 @@
-#ifndef PROBABILITYDISTRIBUTION_H
-#define PROBABILITYDISTRIBUTION_H
+#ifndef CHISQUAREDISTRIBUTION_H
+#define CHISQUAREDISTRIBUTION_H
 
-class ProbabilityDistribution{
+class ChiSquareDistribution{
     public:
-        ProbabilityDistribution(const int, const int);
-        ~ProbabilityDistribution();
+        ChiSquareDistribution(const int, const int);
+        ~ChiSquareDistribution();
         
         //Funções SET
         void setNumberOfMeasurements(const int);
