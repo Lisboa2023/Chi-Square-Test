@@ -18,7 +18,7 @@ int main()
     const double *cmPtr = covarianceMatrix[0];                                       
 
     ProbabilityDistribution X2(size,df);
-    X2.ChiSquareTest(size, df, measurement, estimatedMeasurements, cmPtr);
+    X2.ChiSquareTest(measurement, estimatedMeasurements, cmPtr);
 
     return 0;
 }

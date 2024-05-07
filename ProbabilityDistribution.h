@@ -13,7 +13,7 @@ class ProbabilityDistribution{
         virtual void setDistribution();
         virtual void setProbabilityDensityFunction(const double);
         virtual void setCumulativeDistributionFunction(const float, const float);
-        void ChiSquareTest(const int, const int, const float *, const float *, const double *);
+        void ChiSquareTest(const float *, const float *, const double *);
         
         //Funções GET
         float getDistribution() const;

@@ -69,7 +69,7 @@ void ProbabilityDistribution::setCumulativeDistributionFunction(const float a,co
     CDF = (h/2)*somatoria;
 }
 
-void ProbabilityDistribution::ChiSquareTest(const int size,const int df,const float *measurement, const float* mEstimated, const double *covarianceMatrix){
+void ProbabilityDistribution::ChiSquareTest(const float *measurement, const float* mEstimated, const double *covarianceMatrix){
     
     setValues(measurement, mEstimated, covarianceMatrix);    
     setDistribution();
