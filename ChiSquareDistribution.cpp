@@ -33,7 +33,7 @@ void ChiSquareDistribution::setConfidenceLevel(const float CL){
 void ChiSquareDistribution::setValues(const float *measurement,const float *mEstimated,const double *covarianceMatrix){
     for (int i = 0; i < size; i++)
     {
-        value[i] = measurement[i] - mEstimated[i]/sqrt(covarianceMatrix[i*size + i]);
+        value[i] = (measurement[i] - mEstimated[i])/sqrt(covarianceMatrix[i*size + i]);
     }
 }
 

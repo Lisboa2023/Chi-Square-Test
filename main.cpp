@@ -23,8 +23,8 @@ int main()
     const float measurement[] = {-4.70, 2.04, -1.90};
     const float estimatedMeasurements[] = {-4.70, 1.97, -1.97};
     const double covarianceMatrix[][size] = {{0.004, 0,0},
-                                             {0,0.004,0},
-                                             {0,0,0.004}};
+                                             {0,0.002,0},
+                                             {0,0,0.002}};
 
     const double *cmPtr = covarianceMatrix[0];                                       
 
