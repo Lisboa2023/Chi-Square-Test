@@ -30,10 +30,10 @@ void ChiSquareDistribution::setConfidenceLevel(const float CL){
 }
 
 //Recebe valores para a Distribuição Qui-Quadrada
-void ChiSquareDistribution::setValues(const float *measurement,const float *mEstimated,const double *covarianceMatrix){
+void ChiSquareDistribution::setValues(const float *measurement,const float *estimatedMeasurement,const double *covarianceMatrix){
     for (int i = 0; i < size; i++)
     {
-        value[i] = (measurement[i] - mEstimated[i])/sqrt(covarianceMatrix[i*size + i]);
+        value[i] = (measurement[i] - estimatedMeasuremented[i])/sqrt(covarianceMatrix[i*size + i]);
     }
 }
 
@@ -74,9 +74,9 @@ void ChiSquareDistribution::setCumulativeDistributionFunction(const float a,cons
     CDF = (h/2)*somatoria;
 }
 
-void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* mEstimated, const double *covarianceMatrix){
+void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* estimatedMeasurement, const double *covarianceMatrix){
     
-    setValues(measurement, mEstimated, covarianceMatrix);    
+    setValues(measurement, estimatedMeasurement, covarianceMatrix);    
     setDistribution();
     float d = getDistribution();
     setCumulativeDistributionFunction(0, d);
