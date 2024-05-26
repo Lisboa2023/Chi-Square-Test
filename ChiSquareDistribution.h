@@ -10,17 +10,21 @@ class ChiSquareDistribution{
         void setNumberOfMeasurements(const int);
         void setDegreesOfFreedom(const int);
         void setConfidenceLevel(const float);
-        void setValues(const float *, const float *, const double *);
-        virtual void setDistribution();
-        virtual void setProbabilityDensityFunction(const double);
-        virtual void setCumulativeDistributionFunction(const float, const float);
-        void ChiSquareTest(const float *, const float *, const double *);
-        
+        void setValues(float *);
+        void setDistribution(const float);
+        void setProbabilityDensityFunction(const double);
+        void setCumulativeDistributionFunction(const float, const float);
+                
         //Funções GET
         float getDistribution() const;
         float getCumulativeDistributionFunction() const;
+        
+        //Funcoes auxiliares
+        void CalculateValues(const float *, const float *, const double *);
+        void CalculateDistribution();
+        void ChiSquareTest(const float *, const float *, const double *);
+        void printResult() const;
 
-        virtual void print() const;
     private:
         int size;
         int degreesoffreedom;
