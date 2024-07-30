@@ -3,11 +3,13 @@
 #include"ChiSquareDistribution.h"
 
 ChiSquareDistribution::ChiSquareDistribution(const int SIZE, const int DF, const float CL){
+    
     setNumberOfMeasurements(SIZE);
     setDegreesOfFreedom(DF);
     setConfidenceLevel(CL);
     value = new float [SIZE];
     distribution = PDF = CDF = 0;
+
 }
 
 ChiSquareDistribution::~ChiSquareDistribution(){
@@ -35,7 +37,7 @@ void ChiSquareDistribution::setDistribution(float DISTRIBUTION){
 }
 
 //Função Densidade de Probabilidade da Distribuição Qui-Quadrada
-void ChiSquareDistribution::setProbabilityDensityFunction(const double t){                   
+void ChiSquareDistribution::setProbabilityDensityFunction(const float t){                   
    
     double a = pow(t,(degreesoffreedom-2)/2);
     double b = exp(-t/2);
@@ -73,14 +75,14 @@ float ChiSquareDistribution::getCumulativeDistributionFunction() const{
     return CDF;
 }
 
-void ChiSquareDistribution::CalculateValues(const float *measurement,const float *estimatedMeasurement,const double *covarianceMatrix){
+void ChiSquareDistribution::CalculateValues(const float *measurement,const float *estimatedMeasurement,const float *covarianceMatrix){
     for (int i = 0; i < size; i++)
     {
         value[i] = (measurement[i] - estimatedMeasurement[i])/sqrt(covarianceMatrix[i*size + i]);
     }
 }
 
-void ChiSquareDistribution::CalculateDistribution(){          
+void ChiSquareDistribution::CalculateDistribution(){
     for(int i = 0; i < size; i++){
         distribution += pow(value[i], 2);
     }
@@ -103,7 +105,7 @@ void ChiSquareDistribution::printResult() const{
     }   
 }
 
-void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* estimatedMeasurement, const double *covarianceMatrix){
+void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* estimatedMeasurement, const float *covarianceMatrix){
     
     CalculateValues(measurement, estimatedMeasurement, covarianceMatrix);    
     CalculateDistribution();
@@ -112,5 +114,13 @@ void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float*
 
 }
 
+void ChiSquareDistribution::ChiSquareTest(float *measurements){
+    
+    setValues(measurements);    
+    CalculateDistribution();
+    setCumulativeDistributionFunction(0, distribution);
+    printResult();
+
+}
 
 

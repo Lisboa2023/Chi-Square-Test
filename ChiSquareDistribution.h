@@ -12,7 +12,7 @@ class ChiSquareDistribution{
         void setConfidenceLevel(const float);
         void setValues(float *);
         void setDistribution(const float);
-        void setProbabilityDensityFunction(const double);
+        void setProbabilityDensityFunction(const float);
         void setCumulativeDistributionFunction(const float, const float);
                 
         //Funções GET
@@ -20,9 +20,10 @@ class ChiSquareDistribution{
         float getCumulativeDistributionFunction() const;
         
         //Funcoes auxiliares
-        void CalculateValues(const float *, const float *, const double *);
+        void CalculateValues(const float *, const float *, const float *);
         void CalculateDistribution();
-        void ChiSquareTest(const float *, const float *, const double *);
+        void ChiSquareTest(const float *, const float *, const float *);
+        void ChiSquareTest(float *);
         void printResult() const;
 
     private:
