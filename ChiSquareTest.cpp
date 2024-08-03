@@ -57,9 +57,9 @@ void ChiSquareDistribution::CalculateChiSquaredVariable(const float *measurement
     
     float temp;
     
-    for (int i = 0; i < number_of_measurements; i++)
+    for (int i = 0; i < getNumberOfMeasurements(); i++)
     {
-        temp = (measurement[i] - estimatedMeasurement[i])/sqrt(covarianceMatrix[i*number_of_measurements + i]);
+        temp = (measurement[i] - estimatedMeasurement[i])/sqrt(covarianceMatrix[i*getNumberOfMeasurements() + i]);
         chi_squared_variable += pow(temp, 2);
     }
 
@@ -68,10 +68,10 @@ void ChiSquareDistribution::CalculateChiSquaredVariable(const float *measurement
 //Função Densidade de Probabilidade da Distribuição Qui-Quadrada===================================
 float ChiSquareDistribution::ChiSquareProbabilityDensityFunction(const float t){                   
    
-    double a = pow(t,(degrees_of_freedom-2)/2);
+    double a = pow(t,(getDegreesOfFreedom()-2)/2);
     double b = exp(-t/2);
-    double c = pow(2,degrees_of_freedom/2);
-    double d = tgamma(degrees_of_freedom/2);
+    double c = pow(2,getDegreesOfFreedom()/2);
+    double d = tgamma(getDegreesOfFreedom()/2);
 
     return (a*b)/(c*d);
 }
@@ -94,12 +94,12 @@ void ChiSquareDistribution::ChiSquareCumulativeDistributionFunction(const float 
 
 void ChiSquareDistribution::printResult() const{
     std::cout << std::endl
-              << "Confidence Level: " << confidence_level << std::endl;
+              << "Confidence Level: " << getConfidenceLevel() << std::endl;
     
-    std::cout << "xt = " << chi_squared_variable << std::endl
-              << "P = " << probability << std::endl;
+    std::cout << "xt = " << getChiSquaredVariable() << std::endl
+              << "P = " << getProbability() << std::endl;
 
-    if(probability > confidence_level){
+    if(getProbability() > getConfidenceLevel()){
         std::cout << std::endl 
                   << "Message: Error Detected" << std::endl;
                   
@@ -113,7 +113,7 @@ void ChiSquareDistribution::printResult() const{
 void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float* estimatedMeasurement, const float *covarianceMatrix){
     
     CalculateChiSquaredVariable(measurement, estimatedMeasurement, covarianceMatrix);    
-    ChiSquareCumulativeDistributionFunction(0, chi_squared_variable);
+    ChiSquareCumulativeDistributionFunction(0, getChiSquaredVariable());
     printResult();
 
 }
@@ -121,7 +121,7 @@ void ChiSquareDistribution::ChiSquareTest(const float *measurement, const float*
 void ChiSquareDistribution::ChiSquareTest(float variable){
     
     setChiSquaredVariable(variable);
-    ChiSquareCumulativeDistributionFunction(0, chi_squared_variable);
+    ChiSquareCumulativeDistributionFunction(0, getChiSquaredVariable());
     printResult();
 
 }
