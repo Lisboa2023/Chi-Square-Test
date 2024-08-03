@@ -15,6 +15,7 @@ int main()
                                              {0,0,0,0,1}};
 
     const float *cmPtr = covarianceMatrix[0];
+    
 /* 
     const int size = 3, df = 1;
     const float cl = 0.95;

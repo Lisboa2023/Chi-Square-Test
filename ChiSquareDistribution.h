@@ -6,34 +6,34 @@ class ChiSquareDistribution{
         ChiSquareDistribution(const int, const int, const float);
         ~ChiSquareDistribution();
         
-        //Funções SET
+        //Funções SET======================================================
         void setNumberOfMeasurements(const int);
         void setDegreesOfFreedom(const int);
         void setConfidenceLevel(const float);
-        void setValues(float *);
-        void setDistribution(const float);
-        void setProbabilityDensityFunction(const float);
-        void setCumulativeDistributionFunction(const float, const float);
+        void setChiSquaredVariable(const float);
                 
-        //Funções GET
-        float getDistribution() const;
-        float getCumulativeDistributionFunction() const;
+        //Funções GET========================================================
+        int getNumberOfMeasurements() const;
+        int getDegreesOfFreedom() const;
+        float getConfidenceLevel() const;
+        float getChiSquaredVariable() const;
+        float getProbability() const;
+        //===================================================================
         
-        //Funcoes auxiliares
-        void CalculateValues(const float *, const float *, const float *);
-        void CalculateDistribution();
+        void CalculateChiSquaredVariable(const float *, const float *, const float *);
+        float ChiSquareProbabilityDensityFunction(const float);
+        void ChiSquareCumulativeDistributionFunction(const float, const float);
+        
         void ChiSquareTest(const float *, const float *, const float *);
-        void ChiSquareTest(float *);
+        void ChiSquareTest(float);
         void printResult() const;
 
     private:
-        int size;
-        int degreesoffreedom;
-        float confidenceLevel;
-        float *value;
-        float distribution;
-        float PDF;
-        float CDF;
+        int number_of_measurements;
+        int degrees_of_freedom;
+        float confidence_level;
+        float chi_squared_variable;
+        float probability;
 };
 
 #endif
