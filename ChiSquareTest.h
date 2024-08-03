@@ -1,5 +1,5 @@
-#ifndef CHISQUAREDISTRIBUTION_H
-#define CHISQUAREDISTRIBUTION_H
+#ifndef CHISQUARETEST_H
+#define CHISQUARETEST_H
 
 class ChiSquareDistribution{
     public:

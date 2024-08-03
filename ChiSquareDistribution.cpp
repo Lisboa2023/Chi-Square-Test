@@ -1,6 +1,6 @@
 #include<iostream>
 #include<cmath>
-#include"ChiSquareDistribution.h"
+#include"ChiSquareTest.h"
 
 ChiSquareDistribution::ChiSquareDistribution(const int SIZE, const int DF, const float CL){
     
@@ -102,6 +102,7 @@ void ChiSquareDistribution::printResult() const{
     if(probability > confidence_level){
         std::cout << std::endl 
                   << "Message: Error Detected" << std::endl;
+                  
     }
     else{
         std::cout << std::endl 

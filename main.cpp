@@ -1,5 +1,5 @@
 #include<iostream>
-#include"ChiSquareDistribution.h"
+#include"ChiSquareTest.h"
 
 int main()
 {   
