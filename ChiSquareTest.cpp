@@ -96,8 +96,8 @@ void ChiSquareDistribution::printResult() const{
     std::cout << std::endl
               << "Confidence Level: " << getConfidenceLevel() << std::endl;
     
-    std::cout << "xt = " << getChiSquaredVariable() << std::endl
-              << "P = " << getProbability() << std::endl;
+    std::cout << "Y = " << getChiSquaredVariable() << std::endl
+              << "Pr = " << getProbability() << std::endl;
 
     if(getProbability() > getConfidenceLevel()){
         std::cout << std::endl 
